@@ -10,6 +10,7 @@ export const globalStyles = StyleSheet.create({
   },
 
   hearder:{
+    backgroundColor: couleurs.Background,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center'

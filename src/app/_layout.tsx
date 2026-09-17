@@ -7,13 +7,16 @@ export default function AppLayout() {
   return (
     <Tabs
       screenOptions={{
-        headerStyle: { borderBlockColor: couleurs.Primaire },
+        headerStyle: {
+          backgroundColor: couleurs.Primaire,
+          borderBottomColor: couleurs.Primaire,
+        },
         headerTintColor: couleurs.Secondaire,
         tabBarStyle: {
-          backgroundColor: couleurs.Secondaire,
+          backgroundColor: couleurs.Primaire,
           borderTopWidth: 0,
         },
-        tabBarActiveTintColor: couleurs.Primaire,
+        tabBarActiveTintColor: couleurs.Secondaire,
         tabBarInactiveTintColor: couleurs.Inactif,
       }}
     >
@@ -25,21 +28,20 @@ export default function AppLayout() {
         }}
       />
       <Tabs.Screen
-        name="index"
+        name="casting"
         options={{
           title: 'Casting',
-          tabBarIcon: ({ color, size }) => <AntDesign name="team" size={size} color={color} />,
+          headerTitle: 'Tous les personnages',
+          tabBarIcon: ({ color, size }) => <MaterialIcons name="group" size={size} color={color} />,
         }}
       />
       <Tabs.Screen
-        name="index"
+        name="favoris"
         options={{
           title: 'Favoris',
-          tabBarIcon: ({ color, size }) => <MaterialIcons name="star" size={size} color={color} />,
+          tabBarIcon: ({ color, size }) => <AntDesign name="star" size={size} color={color} />,
         }}
       />
     </Tabs>
   );
 }
-
-

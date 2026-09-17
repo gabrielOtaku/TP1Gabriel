@@ -3,7 +3,7 @@ import AntDesign from '@expo/vector-icons/AntDesign';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { Tabs } from 'expo-router';
 
-export default function RootLayout() {
+export default function AppLayout() {
   return (
     <Tabs
       screenOptions={{
@@ -41,3 +41,5 @@ export default function RootLayout() {
     </Tabs>
   );
 }
+
+

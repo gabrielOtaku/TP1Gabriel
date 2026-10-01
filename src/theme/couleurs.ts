@@ -3,4 +3,5 @@ export const couleurs = {
   Primaire: '#1a1a1a',
   Secondaire: '#FFE81F',
   Inactif: '#888888',
+  warning : '#fa0511ee'
 };

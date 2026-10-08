@@ -3,6 +3,7 @@ import { globalStyles } from '@/theme/global';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { useState } from 'react';
 import {
+  Alert,
   Image,
   KeyboardAvoidingView,
   Platform,
@@ -11,13 +12,34 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
-  View
+  View,
 } from 'react-native';
 
 export default function Casting() {
   const [nom, setNom] = useState<string>('');
   const [age, setAge] = useState<string>('');
   const [film, setFilm] = useState<string>('');
+  const [compterPress, setCompteurPress] = useState<number>(0);
+
+  const gererPressAlien = () => {
+    const monClickAlert = compterPress + 1;
+    setCompteurPress(monClickAlert);
+
+    if (monClickAlert === 6) {
+      Alert.alert('Alert', 'Mode secret activé !');
+    } else if (monClickAlert > 6) {
+      if (nom !== '' && age !== '' && film !== '') {
+        Alert.alert(
+          'Alert',
+          `Vos cordonnées personnelles ont été envoyés à la direction :\nNom: ${nom}\nÂge: ${age},\nPersonnage préféré: ${film}!`,
+        );
+      }
+    }
+  };
+
+  const reinitialiserCompteur = () => {
+    setCompteurPress(0);
+  };
 
   return (
     <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={{ flex: 1 }}>
@@ -67,7 +89,7 @@ export default function Casting() {
         </Text>
 
         <View style={styles.IconForm}>
-          <TouchableOpacity /*</View>onPress={reinitialiserCompteur}*/>
+          <TouchableOpacity onPress={reinitialiserCompteur}>
             <MaterialCommunityIcons name="alert" size={28} color={couleurs.warning} />
           </TouchableOpacity>
           <MaterialCommunityIcons name="access-point-network" size={28} color={couleurs.Inactif} />
@@ -75,7 +97,7 @@ export default function Casting() {
           <MaterialCommunityIcons name="alien" size={28} color="red" />
           <MaterialCommunityIcons name="alert" size={28} color={couleurs.Inactif} />
           <MaterialCommunityIcons name="star" size={28} color={couleurs.Inactif} />
-          <TouchableOpacity /*onPress={gererClicAlien}*/>
+          <TouchableOpacity onPress={gererPressAlien}>
             <MaterialCommunityIcons name="alien-outline" size={28} color={couleurs.Secondaire} />
           </TouchableOpacity>
           <MaterialCommunityIcons name="alien" size={28} color={couleurs.Inactif} />
@@ -116,7 +138,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   avertissement: {
-    color: couleurs.Secondaire, 
+    color: couleurs.Secondaire,
     textAlign: 'center',
     fontSize: 12,
     marginVertical: 20,

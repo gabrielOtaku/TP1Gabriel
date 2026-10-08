@@ -13,7 +13,8 @@ export const globalStyles = StyleSheet.create({
     backgroundColor: couleurs.Background,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center'
+    alignItems: 'center',
+    padding:25
   }
 });
 
